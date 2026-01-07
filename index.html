@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastCopy | Premium Printing Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="fas fa-bolt me-2"></i>FASTCOPY
+            </a>
+            <div class="ms-auto d-flex align-items-center">
+                <button class="btn btn-history me-2" onclick="showCategory('antrian')">
+                    <i class="fas fa-history"></i>
+                </button>
+                <button class="btn btn-order-top" onclick="showCategory('produk')">Pesan</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container text-center">
+            <div class="status-badge mb-3">
+                <i class="fas fa-clock me-2"></i>Buka: 08.00 - 21.00
+            </div>
+            <h1 class="display-5 fw-bold text-white">Solusi Cetak & ATK</h1>
+            <p class="text-white-50">Lengkap, Cepat, dan Kualitas Terjamin</p>
+        </div>
+    </section>
+
+    <div class="container mt-n4">
+        <div class="tab-wrapper shadow-sm">
+            <button class="tab-btn active" id="tab-produk" onclick="showCategory('produk')">Layanan Utama</button>
+            <button class="tab-btn" id="tab-toko" onclick="showCategory('toko')">Produk Toko</button>
+        </div>
+    </div>
+
+    <main class="container my-5">
+        <div id="productSection" class="content-view">
+            <div id="productGrid" class="grid-layout"></div>
+        </div>
+
+        <div id="queueSection" class="content-view hidden">
+            <h4 class="fw-bold mb-4">Riwayat Pesanan</h4>
+            <div id="queueList"></div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Informasi</h5>
+                    <p class="footer-text">
+                        Kantor Pusat & Pemasaran:<br>
+                        Jl. Lengkong Besar 143 Bandung<br>
+                        Telp. (022) 5211607
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i> Instagram</a><br>
+                        <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Menu</h5>
+                    <ul class="footer-menu">
+                        <li>Beranda</li>
+                        <li>Produk</li>
+                        <li>Tentang Kami</li>
+                        <li>Gallery</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Jam Buka</h5>
+                    <ul class="opening-hours">
+                        <li>Senin - Jumat: 08:00 - 17:00</li>
+                        <li>Sabtu: 09:00 - 15:00</li>
+                        <li>Minggu: Libur</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Lokasi</h5>
+                    <div class="map-placeholder">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.666795438888!2d107.61343707410657!3d-6.930409967840139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e8869151528b%3A0x8686733291d37443!2sJl.%20Lengkong%20Besar%20No.143%2C%20Cikawao%2C%20Kec.%20Lengkong%2C%20Kota%20Bandung%2C%20Jawa%20Barat%2040261!5e0!3m2!1sid!2sid!4v1709600000000!5m2!1sid!2sid" width="100%" height="150" style="border:0; border-radius:10px;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>Copyright © 2026 FastCopy Sejahtera Bersama. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="queueModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="fw-bold">Detail Pesanan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="selectedItemPreview" class="p-3 bg-light rounded-3 mb-3"></div>
+                    <form id="queueForm" onsubmit="submitQueue(event)">
+                        <input type="text" id="queueName" class="form-control mb-2" placeholder="Nama Lengkap" required>
+                        <input type="tel" id="queuePhone" class="form-control mb-3" placeholder="Nomor WhatsApp" required>
+                        <input type="hidden" id="queueProduct">
+                        <button type="submit" class="btn btn-wa-submit w-100">
+                            Pesan Sekarang <i class="fab fa-whatsapp ms-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

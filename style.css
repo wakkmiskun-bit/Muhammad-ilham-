@@ -1,0 +1,111 @@
+:root {
+    --primary: #1a237e;
+    --secondary: #3949ab;
+    --accent: #f9a825;
+    --bg-solid: #f4f7fe;
+    --white: #ffffff;
+    --text-dark: #2c3e50;
+}
+
+body {
+    background-color: var(--bg-solid);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+}
+
+/* Navbar Solid */
+.navbar {
+    background: var(--primary) !important;
+    padding: 15px 0;
+}
+.navbar-brand { color: var(--white) !important; letter-spacing: 1px; }
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    padding: 60px 0 100px 0;
+    color: white;
+}
+.status-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+/* Tab Menu Kapsul */
+.tab-wrapper {
+    background: white;
+    display: flex;
+    max-width: 500px;
+    margin: -30px auto 0 auto;
+    border-radius: 50px;
+    padding: 5px;
+}
+.tab-btn {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 12px;
+    border-radius: 50px;
+    font-weight: 600;
+    color: #888;
+}
+.tab-btn.active {
+    background: var(--primary);
+    color: white;
+}
+
+/* Grid Rapi Tengah */
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Card Rapi */
+.product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    text-align: center;
+    padding-bottom: 15px;
+}
+.product-card:hover { transform: translateY(-5px); }
+.product-card img { width: 100%; height: 150px; object-fit: cover; }
+.card-title { font-size: 1rem; font-weight: 700; margin: 15px 0 5px 0; }
+.card-price { color: var(--primary); font-weight: 800; display: block; margin-bottom: 10px; }
+
+/* Footer Sesuai SS */
+.main-footer {
+    background: #0d1242;
+    color: #e0e0e0;
+    padding: 60px 0 20px 0;
+    margin-top: 80px;
+}
+.footer-title {
+    color: white;
+    font-weight: 700;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+.footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 40px; height: 3px;
+    background: var(--accent);
+}
+.footer-menu, .opening-hours { list-style: none; padding: 0; }
+.footer-menu li, .opening-hours li { margin-bottom: 10px; font-size: 0.9rem; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 20px; font-size: 0.8rem; opacity: 0.6; }
+
+/* Buttons */
+.btn-order-top { background: var(--accent); color: white; border-radius: 8px; font-weight: 700; border: none; padding: 5px 20px; }
+.btn-wa-submit { background: #25d366; color: white; font-weight: 700; padding: 12px; border-radius: 10px; border: none; }
+.hidden { display: none; }
